@@ -1,0 +1,76 @@
+openapi: 3.0.0
+info:
+  title: My API
+  version: 1.0.0
+  description: API documentation
+servers:
+  - url: http://localhost:3000
+paths:
+  /api/v1/users:
+    get:
+      tags:
+        - Users
+      summary: Get all users
+      responses:
+        '200':
+          description: A list of users.
+    post:
+      tags:
+        - Users
+      summary: Create a new user
+      responses:
+        '201':
+          description: User created successfully.
+    /api/v1/users/{id}:
+      get:
+        tags:
+          - Users
+        summary: Get a user by ID
+        parameters:
+          - in: path
+            name: id
+            required: true
+            description: ID of the user to get
+            schema:
+              type: string
+        responses:
+          '200':
+            description: User found.
+          '404':
+            description: User not found.
+      put:
+        tags:
+          - Users
+        summary: Update a user by ID
+        parameters:
+          - in: path
+            name: id
+            required: true
+            description: ID of the user to update
+            schema:
+              type: string
+        responses:
+          '200':
+            description: User updated.
+          '404':
+            description: User not found.
+      delete:
+        tags:
+          - Users
+        summary: Delete a user by ID
+        parameters:
+          - in: path
+            name: id
+            required: true
+            description: ID of the user to delete
+            schema:
+              type: string
+        responses:
+          '200':
+            description: User deleted.
+          '404':
+            description: User not found.
+components: {}
+tags:
+  - name: Users
+    description: API endpoints for managing users
